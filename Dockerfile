@@ -5,7 +5,8 @@ ENV DEBIAN_FRONTEND noninteractive
 RUN apt-get update -y && apt-get install -y haskell-platform && \
     cabal update && cabal install pandoc && \
     ln -s /root/.cabal/bin/pandoc /bin/pandoc && \
-    rm -rf /tmp/* /var/tmp/*
+    apt-get -qq clean && \
+    rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 WORKDIR /srv
 ENTRYPOINT ["/root/.cabal/bin/pandoc"]
