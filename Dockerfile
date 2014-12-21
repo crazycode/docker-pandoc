@@ -7,6 +7,6 @@ RUN apt-get update -y && apt-get install -y haskell-platform && \
     ln -s /root/.cabal/bin/pandoc /bin/pandoc && \
     rm -rf /tmp/* /var/tmp/*
 
-WORKDIR /source
-ENTRYPOINT ["/.cabal/bin/pandoc"]
+WORKDIR /srv
+ENTRYPOINT ["/root/.cabal/bin/pandoc"]
 CMD ["--help"]
